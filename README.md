@@ -1,6 +1,6 @@
 # EncCluster
 
-Official-style implementation of **EncCluster: Scalable Functional Encryption in
+Implementation of **EncCluster: Scalable Functional Encryption in
 Federated Learning through Weight Clustering and Probabilistic Filters**.
 
 📄 Paper: [Pervasive and Mobile Computing 108 (2025) 102021](https://www.sciencedirect.com/science/article/pii/S1574119225000100) · [arXiv:2406.09152](https://arxiv.org/abs/2406.09152)
