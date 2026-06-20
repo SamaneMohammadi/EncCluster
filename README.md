@@ -1,17 +1,28 @@
 # EncCluster
 
-Implementation of **EncCluster: Scalable Functional Encryption in
-Federated Learning through Weight Clustering and Probabilistic Filters**.
+Implementation of **EncCluster: Scalable Functional Encryption in Federated
+Learning through Weight Clustering and Probabilistic Filters**.
 
 📄 Paper: [Pervasive and Mobile Computing 108 (2025) 102021](https://www.sciencedirect.com/science/article/pii/S1574119225000100) · [arXiv:2406.09152](https://arxiv.org/abs/2406.09152)
 
-EncCluster is a secure aggregation method for federated learning. Clients
-compress their model update into a small set of weight-cluster centroids,
-encrypt only those centroids with decentralized functional encryption, and encode
-the cluster-to-weight mapping into a Binary Fuse filter. The server reconstructs
-the mapping and aggregates the encrypted centroids directly — protecting against
-inference attacks while keeping communication below FedAvg and encryption costs
-low enough for edge devices.
+EncCluster offers robust privacy protection against inference attacks while
+requiring minimal communication and computation overhead for clients
+participating in FL. The framework is built on three building blocks: (i) model
+compression via weight clustering, (ii) decentralized FE, allowing cryptographic
+encryption without a fully trusted third party, and (iii) encoding via a
+probabilistic data structure, termed Binary Fuse (BF) filters, to enhance privacy
+without introducing excessive computational burdens. Weight clustering is applied
+locally on clients' models, and the resulting set of cluster centroids is
+encrypted via FE. The cluster-weight mapping, which signifies associations
+between positions in the weight matrix and respective centroids, is then injected
+into BF filters through computationally efficient hashing operations. To fuse all
+model updates, the server reconstructs this mapping via a membership query in the
+BF filters and performs a secure aggregation without decrypting the clients'
+model updates. In doing so, EncCluster restricts the computationally "heavy"
+encryption operations to a small set of centroid values, while their mapping to
+model weights is encoded through cost-effective hashing operations, striking a
+balance between preserving privacy and meeting practical computational and
+communication demands in FL.
 
 ## Methods
 
@@ -49,15 +60,15 @@ larger architectures.
 
 ```bibtex
 @article{tsouvalas2025enccluster,
-  title   = {EncCluster: Scalable Functional Encryption in Federated Learning
-             through Weight Clustering and Probabilistic Filters},
-  author  = {Tsouvalas, Vasileios and Mohammadi, Samaneh and Balador, Ali and
-             Ozcelebi, Tanir and Flammini, Francesco and Meratnia, Nirvana},
-  journal = {Pervasive and Mobile Computing},
-  volume  = {108},
-  pages   = {102021},
-  year    = {2025}
+  title={EncCluster: Scalable functional encryption in federated learning through weight clustering and probabilistic filters},
+  author={Tsouvalas, Vasileios and Mohammadi, Samaneh and Balador, Ali and Ozcelebi, Tanir and Flammini, Francesco and Meratnia, Nirvana},
+  journal={Pervasive and Mobile Computing},
+  volume={108},
+  pages={102021},
+  year={2025},
+  publisher={Elsevier}
 }
+
 ```
 
 ## License
