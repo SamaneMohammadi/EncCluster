@@ -26,35 +26,38 @@ communication demands in FL.
 
 ## Methods
 
-Select with `--method`:
+`src/enccluster/` is the full EncCluster method (weight clustering + Binary Fuse
+filter + DMCFE secure aggregation). The baselines under `src/baselines/` ablate
+the building blocks:
 
-- **`enccluster`** — the full method: weight clustering + Binary Fuse filter +
-  DMCFE secure weighted aggregation over encrypted centroids.
 - **`bfuse`** — clustering + Binary Fuse filter, plaintext aggregation.
 - **`cluster`** — weight clustering only, plaintext aggregation.
 - **`fedavg`** — standard FedAvg.
 
-Models (`--model`): `resnet20`, `mlpmixer`, `convnext`.
+Architectures (`--model`): `resnet20`, `mlpmixer`, `convnext`.
 
 ## Setup
 
 ```bash
+bash install.sh                  # builds the Binary Fuse filter and installs the DMCFE backend (modules/)
 pip install -r requirements.txt
-./setup_modules.sh        # builds the Binary Fuse filter and installs the DMCFE backend
 ```
 
 ## Usage
 
 ```bash
 cd src
-python train.py --method enccluster --model resnet20 --rounds 10
-python train.py --method bfuse      --model mlpmixer --rounds 50
-python train.py --method fedavg     --model convnext --rounds 50
+# full method
+python enccluster/main.py --model resnet20 --num_clients 10 --num_rounds 100 --num_clusters 128
+
+# baselines
+python baselines/bfuse/main.py   --model resnet20 --num_rounds 100 --num_clusters 128
+python baselines/cluster/main.py --model resnet20 --num_rounds 100 --num_clusters 128
+python baselines/fedavg/main.py  --model resnet20 --num_rounds 100
 ```
 
-CIFAR-10 downloads automatically. Functional-encryption decryption runs per
-parameter, so `enccluster` suits smaller models; the baselines scale to the
-larger architectures.
+Clustering (and thus the encrypted aggregation) starts at round `--init_cluster_rnd`;
+earlier rounds use plain FedAvg as warm-up. CIFAR-10 downloads automatically.
 
 ## Citation
 
@@ -68,7 +71,6 @@ larger architectures.
   year={2025},
   publisher={Elsevier}
 }
-
 ```
 
 ## License

@@ -1,10 +1,11 @@
 torch>=2.0
 torchvision>=0.15
-numpy>=1.24
-scikit-learn>=1.3
-tqdm>=4.65
-cffi>=1.15
-# DMCFE backend (vendored in modules/mife):
-pycryptodome>=3.18
-gmpy2>=2.1
-fastecdsa>=2.3
+torchmetrics
+scikit-learn
+numpy
+einops
+flwr[simulation]>=1.5,<1.9
+# DMCFE backend (modules/mife):
+pycryptodome
+gmpy2
+fastecdsa
