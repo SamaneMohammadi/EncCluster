@@ -1,15 +1,3 @@
-"""DMCFE weighted secure aggregation over encrypted centroids (Eq. secure_agg),
-built on mife's multi-client inner-product scheme (eprint 2017/989).
-
-Each client encrypts its kappa centroids. For parameter i the server gathers the
-clients' encrypted centroids Zhat_n[P_n[i]] and decrypts the weighted sum
-  sum_n |D_n| * Z_n[P_n[i]],
-then divides by |D| -> weighted FedAvg, computed entirely on ciphertext.
-
-mife recovers the result by a bounded discrete-log search, so the aggregated
-integer must stay within DECRYPT_BOUND. We therefore set the fixed-point
-precision from the total sample count, so |D| * Z * 10^prec always fits."""
-
 import math
 import numpy as np
 from mife.multiclient.ddh import FeDDHMultiClient
