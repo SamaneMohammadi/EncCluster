@@ -1,16 +1,4 @@
-"""Functional-encryption tools for EncCluster's secure aggregation.
-
-Wraps the DMCFE multi-client inner-product scheme (mife FeDDHMultiClient) to
-securely compute a weighted average of clients' (reconstructed) model weights.
-Floats are encoded to integers with a fixed-point scale before encryption.
-
-The weighted FedAvg is carried in the functional key (v_n = |D_n|): for a weight
-position, the server decrypts  sum_n |D_n| * w_{n}  and divides by |D|. Because
-the scheme recovers the result by a bounded discrete-log search, the precision is
-adapted per position to keep the aggregate within BOUND, and identical
-cross-client value tuples are decrypted once and cached (positions that map to
-the same centroids across all clients share a result).
-"""
+"""Functional-encryption tools for EncCluster's secure aggregation"""
 
 from mife.multiclient.ddh import FeDDHMultiClient
 from mife.data.fastecdsa_wrapper import WrapCurve
