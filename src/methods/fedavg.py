@@ -1,4 +1,3 @@
-"""FedAvg baseline: plain weighted averaging of full models (no compression)."""
 
 import numpy as np
 
