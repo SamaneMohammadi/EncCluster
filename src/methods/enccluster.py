@@ -1,11 +1,3 @@
-"""EncCluster (the full method): clustering + Binary Fuse filter encoding
-+ DMCFE secure weighted aggregation over encrypted centroids.
-
-Clients encrypt only their kappa weight-centroids and encode the cluster-weight
-mapping into a BF filter. The server reconstructs each mapping from the filter
-and securely aggregates the encrypted centroids without decrypting any update.
-BatchNorm buffers (not weights) are aggregated in plaintext."""
-
 import numpy as np
 from clustering import weight_clustering, unflatten_state, aggregate_buffers
 from filters import encode_mapping, reconstruct_mapping
