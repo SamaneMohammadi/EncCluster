@@ -1,19 +1,3 @@
-"""EncCluster server-side secure aggregation (Algorithm 2).
-
-For the first `init_cluster_rnd` rounds the server aggregates full weights
-(plain FedAvg). From then on it runs the full EncCluster path:
-
-  1. each client sends cluster centroids + the cluster-weight mapping,
-  2. the mapping is encoded into a Binary Fuse filter and reconstructed on the
-     server (populate_filter / reconstruct_indexes) -- the privacy-enhancing
-     probabilistic encoding,
-  3. each client's weights are reconstructed from centroids + reconstructed
-     mapping, and
-  4. the weights are securely aggregated under decentralized functional
-     encryption (fe_aggregation), giving the weighted FedAvg without the server
-     ever decrypting an individual client's update.
-"""
-
 import logging
 import functools
 import collections
