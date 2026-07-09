@@ -1,18 +1,3 @@
-"""EncCluster / FedCPF training (Algorithm 1).
-
-Each round, clients train locally; the chosen method aggregates their updates.
-  enccluster -- full method: clustering + Binary Fuse filter + DMCFE secure agg
-  bfuse   -- clustering + BF filter, plaintext aggregation
-  cluster -- clustering only, plaintext aggregation
-  fedavg  -- plain FedAvg
-
-FE decryption is per parameter, so --method enccluster is intended for small models;
-the baselines scale to the larger architectures (same result up to quantization).
-
-    python train.py --method enccluster --model resnet20 --rounds 10
-    python train.py --method fedavg --model convnext --rounds 50
-"""
-
 import os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "modules", "pyfilters"))
 
