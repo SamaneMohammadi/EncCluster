@@ -1,6 +1,3 @@
-"""BFuse baseline: clustering + Binary Fuse filter (mapping goes through encode +
-reconstruct), plaintext aggregation. BN buffers averaged in plaintext."""
-
 from clustering import weight_clustering, unflatten_state, aggregate_buffers
 from filters import encode_mapping, reconstruct_mapping
 
