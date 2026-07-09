@@ -1,6 +1,3 @@
-"""Cluster-only baseline: weight clustering, expand, plaintext weighted average
-(isolates the effect of clustering compression). BN buffers averaged in plaintext."""
-
 from clustering import weight_clustering, unflatten_state, aggregate_buffers
 
 
