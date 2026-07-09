@@ -1,9 +1,3 @@
-"""Binary Fuse filter encoding of the cluster-weight mapping (Eq. 2-3).
-
-The mapping P is encoded as the key set {(i, P[i])} in a BF filter; the server
-recovers P'[i] by a membership query over all clusters. BF filters have zero
-false negatives, so P' ~= P (errors only from rare false positives, ~2^-bpe)."""
-
 import numpy as np
 from pyfilters.pyfilters import Fuse8, Fuse16
 
