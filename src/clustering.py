@@ -1,8 +1,3 @@
-"""Weight clustering: compress a model's WEIGHTS into kappa centroids + a mapping
-P (theta[i] ~= Z[P[i]]). BatchNorm buffers (running_mean/var, counters) are not
-weights, so they are excluded from clustering/encryption and aggregated in
-plaintext instead (see aggregate_buffers)."""
-
 import numpy as np
 from sklearn.cluster import KMeans
 
